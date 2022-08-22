@@ -1,17 +1,20 @@
 const express = require("express")
-const authValidation = require("../middleware/auth")
+const authMiddleware = require("../middleware/auth")
+const UserService = require("../services/users")
+
 
 function users(app){
     const router = express.Router()
+    const userServ = new UserService()
 
     app.use("/api/users",router)
 
 
-    router.get("/",authValidation(3),(req,res)=>{
-        console.log(req.cookies)
-        return res.json({
-            success:true
-        })
+    router.get("/",authMiddleware(2),async (req,res)=>{
+       
+        const users = await userServ.getAll() // Array de usuarios
+
+        return res.json(users)
     })
 }
 

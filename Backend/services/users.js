@@ -8,13 +8,22 @@ const uuid = require("uuid")
 
 class User{
 
+    async getAll(){
+        try{
+            const users = await UserModel.find()
+            return users 
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     //Buscamos usuario por email 
 
     async getByEmail(email){
         try {
-            const user = await UserModel.findOne({email})
+            const customer = await UserModel.findOne({email})
 
-            return user
+            return customer
         } catch (error) {
             console.log(error)
             return error

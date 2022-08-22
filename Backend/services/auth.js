@@ -40,7 +40,7 @@ class Auth{
                 success:false,
                 errors:result.error
             }
-        }
+        } 
 
         return this.#getUserData(result.user)
 

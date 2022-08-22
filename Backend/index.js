@@ -6,6 +6,7 @@ const { port, sessionSecret } = require("./config")
 const { connection } = require("./config/db")
 const passport = require("passport")
 const cors = require("cors")
+require("dotenv").config({path: '.env'});
 
 
 // Routes:
@@ -13,7 +14,7 @@ const auth = require("./routes/auth")
 const users = require("./routes/users")
 const products = require("./routes/products")
 const cart = require("./routes/cart")
-const reviews = require("./routes/reviews")
+// const reviews = require("./routes/reviews")
 const webhooks = require("./routes/webhooks")
 const { useGoogleStrategy,useFacebookStrategy,useGitHubStrategy,useTwitterStrategy } = require("./middleware/authProvider")
 
@@ -30,7 +31,7 @@ app.use("/api/webhooks/stripe",express.raw({type: 'application/json'}))
 app.use(express.json())
 app.use(cookie())
 app.use(cors({
-    origin:["http://localhost:3000","http://127.0.0.1:5500"],
+    origin:[process.env.URL_FRONTEND],
     credentials:true
 }))
 
@@ -59,12 +60,12 @@ auth(app)
 users(app)
 products(app)
 cart(app)
-reviews(app)
+// reviews(app)
 webhooks(app)
 
 app.get("/",(req,res)=>{
     return res.json({
-        name:"Ecommerce v2"
+        name:"Ecommerce"
     })
 })
 
