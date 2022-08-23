@@ -18,6 +18,7 @@ En caso de tener una cuenta podemos logearnos con el mail y la contraseña, en c
 (esta pensado para que el rol se crea automaticamente en 1) <br>
 La sesion es un token que se guarda por 7 dias, se almacena en una cookie <br>
 Se crea codigo para administrar los errores de inicio de sesion, ya sea datos incorrectos como en caso de registrarse y ya esta registrado ese email <br>
+Se puede registrar y logear mediante Facebook, Google, Twitter y Github, el url es https://ecommerce-agr.herokuapp.com/api/auth/google (o cambiar este ultimo por el correspondiente) <br>
 Tambien se crea una validación verificando si el usuario esta logeado solamente para que sea utilizado por el frontend. <br>
 *Solo el admin puede ver todos los usuarios* <br>
 
