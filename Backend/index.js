@@ -6,7 +6,7 @@ const { port, sessionSecret } = require("./config")
 const { connection } = require("./config/db")
 const passport = require("passport")
 const cors = require("cors")
-require("dotenv").config({path: '.env'});
+require("dotenv").config({path: '.env'})
 
 
 // Routes:

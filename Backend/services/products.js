@@ -6,7 +6,7 @@ class Products{
 
     //Obtenemos todos los productos y realizamos la paginacion
 
-    async getAll(limit=20,page=1){
+    async getAll(limit=8,page=1){
         const total = await ProductModel.count()
         const totalPages = Math.ceil(total / limit)
         if(page>totalPages || page<1){
@@ -33,6 +33,16 @@ class Products{
             totalPages
         }
         
+    }
+
+    // Obtenemos un producto
+
+    async getOne(id){
+        try {
+            const product = await ProductModel.findById(id)
+            return product
+        } catch (error) {
+        }
     }
 
     //Metodo para crear el producto
